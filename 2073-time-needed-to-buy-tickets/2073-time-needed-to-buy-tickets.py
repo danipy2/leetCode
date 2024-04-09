@@ -1,13 +1,18 @@
 class Solution:
     def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
-        count = 0
-        i = 0
-        while(tickets[k]):
-            if tickets[i%len(tickets)]:
-                count += 1
-                tickets[i%len(tickets)] -= 1
-            i+=1
-        return count
+        sum = 0
+        for i in range(len(tickets)):
+            if i <= k:
+                if tickets[i] <=tickets[k]:
+                    sum+=tickets[i]
+                else:
+                    sum+=tickets[k]
+            else:
+                if tickets[i] <tickets[k]:
+                    sum+=tickets[i]
+                else:
+                    sum+=tickets[k]-1
+        return sum
             
 
         
