@@ -1,17 +1,14 @@
+import math
 class Solution:
-    def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
+    def deckRevealedIncreasing(self,deck):
         mylist = sorted(deck)
-        if len(deck) < 3:
+        length = len(deck)
+        if length < 3:
             return deck
-        newlist = mylist[len(mylist) - 2:len(mylist)]
-        mylist = mylist[:len(mylist) - 2]
-        while (len(mylist)):
+        newlist = mylist[length - 2:length]
+        mylist = mylist[:length - 2]
+        for i in range(length - 3, -1, -1):
             newlist.insert(0, newlist[-1])
             newlist.pop()
-            newlist.insert(0, mylist[-1])
-            mylist.pop()
+            newlist.insert(0, mylist[i])
         return newlist
-
-
-
-        
