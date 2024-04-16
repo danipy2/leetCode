@@ -5,7 +5,9 @@ class Solution(object):
         
         while(left<=right):
             mid = (left+right)//2
-            if nums[mid] == target or  nums[mid] > target and (mid==0 or  nums[mid-1] < target):
+            if nums[mid] == target :
+                return mid
+            elif nums[mid] > target and (mid==0 or  nums[mid-1] < target):
                 return mid
             elif nums[mid] > target:
                 right = mid -1
