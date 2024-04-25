@@ -5,10 +5,8 @@ class Solution:
         while(left<=right):
            mid = (left+right)//2
            if citations[mid] == len(citations)-mid:
-
                 return citations[mid] 
            if (citations[mid] > (len(citations)-mid ))and(mid==0 or citations[mid-1] <=(len(citations)-mid)):
-                print(2,citations[mid] > (len(citations)-mid))
                 return  len(citations)-mid
            elif citations[mid] > (len(citations)-mid ):
                 right = mid -1
