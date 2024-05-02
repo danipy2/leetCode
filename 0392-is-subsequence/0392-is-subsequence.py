@@ -8,8 +8,8 @@ class Solution:
                 left += 1
                 if left>=(len(s)):
                     return True
-        else:
-            return False
+
+        return False
         
             
             
