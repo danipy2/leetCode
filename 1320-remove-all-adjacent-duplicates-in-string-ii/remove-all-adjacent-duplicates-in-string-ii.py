@@ -1,17 +1,12 @@
 class Solution:
-    def removeDuplicates(self, s: str, k: int) -> str:
-        stack = [s[0]]
-        stack2 = [1]
-        for i in s[1:]:
-            if stack and (len(stack)-(stack2[-1]))>=0 and stack[(len(stack)-(stack2[-1]))] == i:
-                if stack2[-1]+1 == k:
-                    stack = stack[:(len(stack)-k)+1]
-                    stack2.pop()
-                    continue
-                stack2[-1] +=1
-                    
-            else:
-                stack2.append(1)
-            stack.append(i)
-        return "".join(stack)
-            
+        def removeDuplicates(self, s, k):
+            stack = [['A', 0]]
+            for i in s:
+                if stack[-1][0] ==i:
+                    stack[-1][1] += 1
+                    if stack[-1][1] == k:
+                        stack.pop()
+                else:
+                    stack.append([i, 1])
+            return ''.join(i * k for i, k in stack)
+                
