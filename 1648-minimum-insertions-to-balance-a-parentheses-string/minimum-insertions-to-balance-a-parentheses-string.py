@@ -2,7 +2,6 @@ class Solution:
     def minInsertions(self, s: str) -> int:
         stack = []
         count = 0
-        i = 0
         for i in s:
             if i=="(":
                 if len(stack)>=1 and stack[-1]==")":
