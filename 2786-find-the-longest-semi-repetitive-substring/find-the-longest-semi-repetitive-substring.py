@@ -10,5 +10,6 @@ class Solution:
                 if s[l] == s[l+1]:
                     count-=1
                 l+=1
-            maxm = max(maxm,i-l+1)
+            else:
+                maxm = max(maxm,i-l+1)
         return maxm
