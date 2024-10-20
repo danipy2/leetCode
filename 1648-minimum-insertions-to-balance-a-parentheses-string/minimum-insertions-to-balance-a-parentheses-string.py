@@ -4,7 +4,7 @@ class Solution:
         count = 0
         for i in s:
             if i=="(":
-                if len(stack)>=1 and stack[-1]==")":
+                if stack and stack[-1]==")":
                     stack.pop()
                     stack.pop()
                     stack.append(i)
