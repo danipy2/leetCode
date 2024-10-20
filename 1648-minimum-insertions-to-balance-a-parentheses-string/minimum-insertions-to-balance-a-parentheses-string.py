@@ -13,16 +13,18 @@ class Solution:
                 else:
                     stack.append(i)
             else:
-                if len(stack)==0:
-                    stack.append("(")
-                    stack.append(i)
-                    count+=1
-                else:
+                if stack:
                     if stack[-1]=="(":
                         stack.append(i)
                     else:
                         stack.pop()
                         stack.pop()
+                    
+                else:
+                    stack.append("(")
+                    stack.append(i)
+                    count+=1
+                    
         while stack:
                 if stack[-1]==")":
                     stack.pop()
