@@ -1,19 +1,20 @@
 class Solution:
     def shortestToChar(self, s: str, c: str) -> List[int]:
-        places = []
-        left = 0
-        arr = []
+        output = []
+        cond = False
         for i in range(len(s)):
-            if s[i] == c:
-                places.append(i)
-        for i in range(len(s)):
-                if s[i] == c:
-                    arr.append(0)
-                    left += 1
-                elif i<places[0]:
-                    arr.append(places[0]-i)
-                elif i>places[-1]:
-                    arr.append(i-places[-1])
+            if s[i]!=c:
+                if len(output)==0:
+                    output.append(0)
                 else:
-                    arr.append(min(i-places[left-1],places[left]-i))
-        return arr
+                    output.append(output[-1]+1)
+            else:
+                left = i-1
+                output.append(0)
+                while left>=0 and ((output[left]> (i-left))or cond==False ):
+                    output[left] = i-left
+                    left-=1
+                cond = True
+
+            
+        return output
