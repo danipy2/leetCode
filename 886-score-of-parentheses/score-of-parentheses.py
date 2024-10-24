@@ -1,16 +1,15 @@
 class Solution:
     def scoreOfParentheses(self, s: str) -> int:
-        contain = ""
-        ss = ""
+        stack = [0]
+        top = 0
         for i in s:
             if i=="(":
-                ss+="+("
+                stack.append(0)
             else:
-                if contain=="(":
-                    ss+="1)"
-                else:
-                    ss+=")*2"
-            contain = i
-        return eval(ss)
+                top = stack.pop()
+                val = max(1,2*top)
+                stack[-1] += val
+
+        return stack.pop()
 
                 
