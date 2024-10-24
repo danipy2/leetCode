@@ -1,19 +1,17 @@
 class Solution:
     def scoreOfParentheses(self, s: str) -> int:
-        stack = []
+        contain = ""
         ss = ""
         output = 0
         for i in s:
             if i=="(":
-                stack.append(i)
                 ss+="+("
             else:
-                if stack and stack[-1]=="(":
+                if contain and contain=="(":
                     ss+="1)"
-                    stack.append(i)
                 else:
                     ss+=")*2"
-                    stack.append(i)
+            contain = i
         return eval(ss)
 
                 
