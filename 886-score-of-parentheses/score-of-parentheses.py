@@ -1,7 +1,7 @@
 class Solution:
     def scoreOfParentheses(self, s: str) -> int:
         stack = []
-        ss = "0"
+        ss = ""
         output = 0
         for i in s:
             if i=="(":
@@ -14,8 +14,6 @@ class Solution:
                 else:
                     ss+=")*2"
                     stack.append(i)
-        ss+="+0"
-        print(ss)
         return eval(ss)
 
                 
