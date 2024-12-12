@@ -6,12 +6,10 @@ class Solution:
             if i == "Y":
                 x+=1
             prefix.append(prefix[-1]+x)
-        minm = len(prefix)+1
+        minm = prefix[-1]
         index = 0
         for i in range(len(prefix)):
-            temp = (prefix[-1] -prefix[i])
-            if i:
-                temp += i-prefix[i] 
+            temp = (prefix[-1] -prefix[i]) + (i-prefix[i] )
             if temp<minm:
                 minm = temp
                 index = i
