@@ -5,9 +5,9 @@ class Solution:
         while l<r:
             while l<len(s) and s[l].isalnum()==False:
                 l+=1
-            while r>=0 and s[r].isalnum()==False:
+            while r>0 and s[r].isalnum()==False:
                 r-=1
-            if l<len(s) and r>=0 and s[r].lower()!=s[l].lower() :
+            if l<len(s) and r>0 and s[r].lower()!=s[l].lower() :
                 return False
             l+=1
             r-=1
