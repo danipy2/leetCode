@@ -1,10 +1,6 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        words=[] 
-        for word in s.split(" "):
-            if word:
-                words.append(word)
-        
+        words= s.split()
         left=0
         right=len(words)-1
         
