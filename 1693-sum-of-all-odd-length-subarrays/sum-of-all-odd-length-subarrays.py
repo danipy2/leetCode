@@ -1,15 +1,11 @@
 class Solution:
     def sumOddLengthSubarrays(self, arr: List[int]) -> int:
-        left = 0
-        p = [0 for i in range(len(arr)+1)]
-        p[1] = arr[0]
-        for i in range(1,len(arr)):
-            p[i+1] = p[i] +arr[i]
         total = 0
-        for i in range(1,len(p)):
-            l = 0
-            while l<i:
-                if (i-l)%2:
-                    total +=  p[i]-p[l]
-                l+=1
+        n = len(arr)
+        for i, val in enumerate(arr):
+            left = i + 1         
+            right = n - i        
+            odd_count = ((left + 1) // 2) * ((right + 1) // 2) + (left // 2) * (right // 2)
+            total += val * odd_count
         return total
+
