@@ -18,15 +18,12 @@ class Solution:
                     total += (myset[l]+1)*r
                 l+=1
                 count_odd-=1
-                print(total,i)
         if count_odd >=k:
             if l:
                 l1 = (myset[l]-(myset[l-1]))
                 r = (len(nums)-myset[-1])
                 total += l1*r
-                print(total,l,r,myset)
             else:
                 r = (len(nums)-myset[-1])
                 total += (myset[l]+1)*r
-            print(total)
         return total
