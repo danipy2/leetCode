@@ -8,16 +8,10 @@ class Solution:
                 stack = [[nums[i],minm]]
                 maxm  = nums[i]
             while stack and stack[-1][0] <= nums[i]:
-                
                 stack.pop()
-            else:
-                if i > 1:
-                    r = len(stack)-1
-                    while r>=0:
-                        if stack and  stack[r][1] < nums[i]:
-                            return True
-                        r-=1
-                stack.append([nums[i],minm])
+            if stack and  stack[-1][1] < nums[i]:
+                return True
+            stack.append([nums[i],minm])
             minm = min(minm,nums[i])
         return False
 
