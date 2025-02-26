@@ -9,13 +9,13 @@ class Solution:
         p1 = dummy
         p2 = dummy.next
         count = 0
-        count1 = 0
         while p2:
-            count+=1
-            p2 = p2.next
-        while p1 and count1 < count-n:
-            p1= p1.next
-            count1+=1
+            if count <n:
+                p2 = p2.next
+                count+=1
+            else:
+                p1 = p1.next
+                p2 = p2.next
         if p1:
             p1.next = p1.next.next
         return dummy.next
