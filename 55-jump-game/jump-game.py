@@ -1,8 +1,13 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        last = len(nums)-1
-        for i in range(len(nums)-2,-1,-1):
-            if nums[i]+i >= last:
-                last = i
-        return nums[0] >= last
+        maxReach = 0
+        for i, jump in enumerate(nums):
+            if i > maxReach:
+                return False
+            maxReach = max(maxReach, i + jump)
+            if maxReach >= len(nums) - 1:
+                return True
+        return False
+
+
 
