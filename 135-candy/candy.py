@@ -15,7 +15,6 @@ class Solution:
                 if count==maxm:
                     count+=1
                     total+=1
-                print(1,total)
                 cond = True
             count = 0
             maxm = 0
@@ -25,12 +24,10 @@ class Solution:
                 i+=1
                 cond = False
                 maxm +=1
-                print(11111111,total)
             while i<len(ratings)-1 and  ratings[i] == ratings[i+1]:
                 cond = True
                 i+=1
                 maxm = 0
-            print(total,i)
             
             count=0
         return len(ratings)+total-1
