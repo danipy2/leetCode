@@ -3,17 +3,12 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        left = 0 
-        right = 1
-        while right<len(nums):
-            while left < right and nums[left]!=0:
-                left+=1
-            while right<len(nums) and nums[right]==0:
-                right +=1
-            if right < len(nums):
-                nums[left],nums[right] = nums[right],nums[left]
-                right+=1
-                left+=1
+        zeros = 0 
+        for ones in range(len(nums)):
+            if nums[ones]:
+                nums[ones],nums[zeros] = nums[zeros],nums[ones]
+                zeros+=1
+        
 
             
             
