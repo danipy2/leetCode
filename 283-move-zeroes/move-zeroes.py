@@ -8,10 +8,13 @@ class Solution:
         while right<len(nums):
             while left < right and nums[left]!=0:
                 left+=1
-            if nums[right] != 0:
+            while right<len(nums) and nums[right]==0:
+                right +=1
+            if right < len(nums):
                 nums[left],nums[right] = nums[right],nums[left]
-            right+=1
-            
+                right+=1
+                left+=1
+
             
             
         
