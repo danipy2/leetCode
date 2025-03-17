@@ -1,7 +1,14 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        new_str = []
-        for i in s:
-            if i.isalnum():
-                new_str.append(i.lower())
-        return new_str==new_str[::-1]
+        l = 0
+        r = len(s)-1
+        while l<r:
+            while l<r and s[l].isalnum()==False :
+                l+=1
+            while l<r and s[r].isalnum()==False:
+                r-=1
+            if l<r and s[l].lower() != s[r].lower():
+                return False
+            l+=1
+            r-=1
+        return True
