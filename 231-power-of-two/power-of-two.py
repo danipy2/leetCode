@@ -5,8 +5,7 @@ class Solution:
         if x == 1:
             return True
         if  x>z:
-            boo = self.check(z*2,x)
-            return boo
+            return self.check(z*2,x)
         elif z>x:
             return False
         else:
