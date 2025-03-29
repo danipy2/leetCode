@@ -5,6 +5,5 @@ class Solution:
         l = 0
         for i in range(len(s)):
             arr[ord(s[i])-ord('a')] = i
-            if arr[0]>=l and arr[1]>=l and arr[2]>=l:
-                t +=  min(arr[0],arr[1],arr[2])+1
+            t +=  min(arr[0],arr[1],arr[2])+1
         return t
