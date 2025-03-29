@@ -10,7 +10,7 @@ class Solution:
                 countzero += 1
             if countzero <= k :
                 maxm = max(maxm,r-l+1)
-            if countzero >k:
+            else:
                 if nums[l] == 0:
                     countzero -=1
                 l+=1
