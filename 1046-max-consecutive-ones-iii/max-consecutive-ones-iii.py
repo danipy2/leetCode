@@ -5,14 +5,13 @@ class Solution:
         countzero = 0
         size = len(nums)
         maxm = 0
+        total = 0
         while r<size:
-            if nums[r] == 0:
-                countzero += 1
-            if countzero <= k :
-                maxm = max(maxm,r-l+1)
+            total += nums[r]
+            if total +k >= r-l+1:
+                maxm = max(maxm,r-l+1)             
             else:
-                if nums[l] == 0:
-                    countzero -=1
+                total -=nums[l]
                 l+=1
             r+=1
         return maxm
