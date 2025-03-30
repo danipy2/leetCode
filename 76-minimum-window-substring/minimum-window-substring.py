@@ -9,6 +9,12 @@ class Solution:
                 myd[s[i]] -=1
                 if myd[s[i]] == 0:
                     n-=1
+            if i-l+1 >= len(minm):
+                if s[l] in myd:
+                    myd[s[l]] +=1
+                    if myd[s[l]] == 1:
+                        n+=1
+                l+=1
             while n==0:
                 if len(minm) > i-l+1:
                     minm = s[l:i+1]
