@@ -7,7 +7,9 @@ class Solution:
             total += nums[i]
             if i - k in myd:
                 maxm = max(total-myd[i-k],maxm)
-            myd[i] = min(myd.get(i-k,total),total)
+                myd[i] = min(myd[i-k],total)
+            else:
+                myd[i] = total
         return maxm
             
             
