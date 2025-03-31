@@ -7,6 +7,6 @@ class Solution:
             total+=num
             remainder=total-goal
             if remainder in seen:
-                count+=seen.get(remainder,0)
+                count+=seen[remainder]
             seen[total]=seen.get(total,0)+1
         return count
