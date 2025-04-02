@@ -1,15 +1,14 @@
 class StockSpanner:
 
     def __init__(self):
-        self.arr = [[10**5+1,-1]]
-        self.count = 0
+        self.arr = [[10**5+1,0]]
 
     def next(self, price: int) -> int:
+        ans = 1
         while self.arr[-1][0] <= price:
-            self.arr.pop()
-        self.arr.append([price,self.count])
-        self.count+=1
-        return self.arr[-1][1]-self.arr[-2][1]
+            ans += self.arr.pop()[1]
+        self.arr.append([price,ans])
+        return ans
         
 
 
