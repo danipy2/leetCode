@@ -5,26 +5,30 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def __init__(self):
-        self.arr1 = []
-        self.arr2 = []
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        def traverse(root,t=1,p=1):
+        arr1 = []
+        arr2 = []
+        def traverse(root,n,e):
+            
             if root:
-                if t==1:
-                    self.arr1.append(p*root.val)
-                    traverse(root.left,t)
-                    self.arr1.append("aa")
-                    traverse(root.right,t,-1)
+                if e==1:
+                    arr1.append(root.val)
                 else:
-                    self.arr2.append(p*root.val)
-                    traverse(root.right,t)
-                    self.arr2.append("aa")
-                    traverse(root.left,t,-1)
-        traverse(root.left,1)
-        traverse(root.right,2)
-        if self.arr1==self.arr2:
+                    arr2.append(root.val)
+                if n%2:
+                    traverse(root.right,n+1,e)
+                    traverse(root.left,n+1,e)
+                else:
+                    traverse(root.left,n+1,e)
+                    traverse(root.right,n+1,e)
+            else:
+                if e==1:
+                    arr1.append(None)
+                else:
+                    arr2.append(None)
+        traverse(root.right,0,1)
+        traverse(root.left,1,2)
+        if arr1 == arr2:
             return True
         return False
-        
-        
+            
