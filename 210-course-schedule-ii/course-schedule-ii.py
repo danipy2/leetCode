@@ -1,26 +1,22 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        req = [0 for i in range(numCourses)]
-        prereq = [[] for i in range(numCourses)]
-        for l,r in prerequisites:
-            prereq[r].append(l) 
-            req[l] += 1
+        color = [0 for i in range(numCourses)]
+        graph = [[] for i in range(numCourses)]
         output = []
-        qeue = deque()
-        for i in range(len(req)):
-            if req[i] == 0:
-                output.append(i)
-                qeue.append(i)
-        while qeue:
-            n = qeue.popleft()
-            for i in prereq[n]:
-                req[i] -= 1
-                if req[i] == 0:
-                    qeue.append(i)
-                    output.append(i)
-        if len(output) != numCourses:
-            return []
-        return output
-
-                
+        for l,r in prerequisites:
+            graph[r].append(l)
+        def dfs(n):
+            color[n] = 1
+            for i in graph[n]:
+                if color[i] == 1 or  color[i]==0 and not dfs(i):
+                    color[n] = 2
+                    return False
+            output.append(n)
+            color[n] = 2
+            return True
+        for i in range(len(graph)):
+            if color[i] == 0:
+                if not dfs(i):
+                    return []
+        return output[::-1]
         
