@@ -7,8 +7,6 @@ class Solution:
             while nums[i] & x:
                 x ^=nums[l]
                 l +=1
-                print(x)
-            else:
-                x |= nums[i] 
+            x |= nums[i] 
             maxm = max(maxm,i-l+1)
         return maxm
