@@ -7,15 +7,9 @@ class KthLargest:
         while nums and len(self.heap) < k:
             heapq.heappush(self.heap,nums.pop())
     def add(self, val: int) -> int:
-        x = -inf
         heapq.heappush(self.heap,val)
-        y = heapq.heappop(self.heap)
-        if len(self.heap)==self.larg:
-            x = heapq.heappop(self.heap)
-
-        y = max(y,x)
-        heapq.heappush(self.heap,y)
- 
+        if len(self.heap)>self.larg:
+            heapq.heappop(self.heap)
         return self.heap[0]
 
 
