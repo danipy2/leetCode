@@ -8,5 +8,5 @@ class Solution:
                 break
             s.add(i)
         total = (len(nums) * (len(nums)+1))//2
-        n2 = total -( sum(nums) - n)
+        n2 = total - sum(nums) + n
         return [n,n2]
