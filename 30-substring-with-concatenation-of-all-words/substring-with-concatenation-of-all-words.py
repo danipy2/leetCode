@@ -12,6 +12,8 @@ class Solution:
             left = i
             curr = defaultdict(int)
             count = 0
+            if i+tlgth >len(s):
+                break
             for j in range(i,n-lgth+1,lgth):
                 word = s[j:j+lgth]
                 if word in word_count:
