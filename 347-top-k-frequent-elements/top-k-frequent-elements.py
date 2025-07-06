@@ -3,11 +3,7 @@ class Solution:
         d = Counter(nums)
         heap = []
         for val ,freq in d.items():
-            heapq.heappush(heap,(-freq,val))
-        arr = []
-        while k:
-            k-=1
-            l,r = heapq.heappop(heap)
-            arr.append(r)
-
-        return arr
+            heapq.heappush(heap,(freq,val))
+            if len(heap) >k:
+                heapq.heappop(heap)
+        return [num for freq,num in heap]
