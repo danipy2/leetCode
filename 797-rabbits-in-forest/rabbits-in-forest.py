@@ -4,5 +4,5 @@ class Solution:
         total = 0
         for n,val in c.items():
             num = n+1
-            total += ceil(val/num) * num
+            total += (((val-1)//num)+1) * num
         return total
