@@ -1,21 +1,19 @@
 class Solution:
     def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
-        img1 = [[img[i][j] for j in range(len(img[0]))] for i in range(len(img))]
-        def inbound(x,y):
-            return  0 <= x < len(img) and 0 <= y < len(img[0])
+        m,n = len(img),len(img[0])
+        img1 = [[0] * n  for i in range(m)]
         directions = [(1,0),(0,1),(1,1),(-1,0),(0,-1),(-1,-1),(-1,1),(1,-1)]
         row = len(img)-3
-        for i in range(len(img)):
-            for j in range(len(img[0])):
+        for i in range(m):
+            for j in range(n):
                 total = img[i][j]
                 count = 1
                 for l,r in directions:
-                    li = i+l
-                    rj = r+j
-                    if inbound(li,rj):
-                        total += img[li][rj]
+                    x = i+l
+                    y = r+j
+                    if 0 <= x < m and 0 <= y < n:
+                        total += img[x][y]
                         count += 1
-                res = floor(total/count)
-                img1[i][j] = res
+                img1[i][j] = total//count
 
         return img1
