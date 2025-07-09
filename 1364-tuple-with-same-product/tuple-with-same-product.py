@@ -1,18 +1,12 @@
 class Solution:
     def tupleSameProduct(self, nums: List[int]) -> int:
-        nums.sort()
-        myd = {}
-        total = 0
+        s = {}
+        count = 0 
         for i in range(len(nums)):
             for j in range(i+1,len(nums)):
-                p = nums[j] * nums[i]
-                if p in myd:
-                    myd[p] +=1
-                    total += (myd[p]-1)*8
-                else:
-                    myd[p]=1
-        return total
-
-                
-
-
+                p  = nums[i]*nums[j]
+                if p not in s:
+                    s[p] = 0
+                count+= 8 * s[p]
+                s[p] += 1
+        return count
