@@ -1,22 +1,10 @@
 class Solution:
     def findRadius(self, houses: List[int], heaters: List[int]) -> int:
         heaters.sort()
-        def bsh(tar):
-            l = 0
-            r = len(heaters)-1
-            while l <=r:
-                mid =  (l + r)//2
-                if heaters[mid] == tar:
-                    return mid
-                elif heaters[mid] > tar:
-                    r = mid -1
-                else:
-                    l = mid +1
-            return l-1
-        maxm = inf
+        maxm = 1000000009
         minm = 0
         for i in houses:
-            ind = bsh(i)
+            ind = bisect_left(heaters,i)-1
             leftlgth = maxm
             rightlgth = maxm 
             if 0<= ind<len(heaters):
