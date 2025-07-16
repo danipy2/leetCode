@@ -6,29 +6,26 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        arr = []
         arr1 = []
-        arr2 = []
-        def traverse(root,n,e):
-            
-            if root:
-                if e==1:
-                    arr1.append(root.val)
-                else:
-                    arr2.append(root.val)
-                if n%2:
-                    traverse(root.right,n+1,e)
-                    traverse(root.left,n+1,e)
-                else:
-                    traverse(root.left,n+1,e)
-                    traverse(root.right,n+1,e)
+        def pre(t,p):
+            val = t.val if t else -101
+            if p:
+                arr.append(val)
             else:
-                if e==1:
-                    arr1.append(None)
+                arr1.append(val)
+            if t:
+                if p:
+                    pre(t.left,p)
+                    pre(t.right,p)
                 else:
-                    arr2.append(None)
-        traverse(root.right,0,1)
-        traverse(root.left,1,2)
-        if arr1 == arr2:
-            return True
-        return False
-            
+                    pre(t.right,p)
+                    pre(t.left,p)
+                    
+        if root:
+            pre(root.left,0)
+            pre(root.right,1)
+        print(arr,arr1)
+        return arr == arr1
+    
+                
