@@ -25,7 +25,6 @@ class Solution:
         if root:
             pre(root.left,0)
             pre(root.right,1)
-        print(arr,arr1)
         return arr == arr1
     
                 
