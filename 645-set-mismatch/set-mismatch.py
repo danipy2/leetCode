@@ -1,12 +1,10 @@
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
-        s = set()
-        n  = 0
+        arr = [0 for i in nums]
         for i in nums:
-            if i in s:
-                n = i
-                break
-            s.add(i)
-        total = (len(nums) * (len(nums)+1))//2
-        n2 = total - sum(nums) + n
-        return [n,n2]
+            arr[i-1] +=1
+        ans = [i+1 for i in range(len(arr)) if arr[i] ==0 or arr[i]==2]
+        if arr[ans[0]-1] == 0:
+            ans[0],ans[1] = ans[1],ans[0]
+        
+        return ans
