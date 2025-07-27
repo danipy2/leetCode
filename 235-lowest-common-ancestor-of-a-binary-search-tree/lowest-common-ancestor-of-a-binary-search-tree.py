@@ -23,9 +23,9 @@ class Solution:
                     return False
                 myset.add(val)
                 return True
-            if r.left:
+            if r.val > val:
                 an |= godeep(r.left,val)
-            if r.right:
+            else:
                 an |= godeep(r.right,val)
             if an:
                 if r.val in myset:
@@ -37,7 +37,6 @@ class Solution:
             return False
         
         godeep(root,p.val)
-        print(myset)
         Found = False
         godeep(root,q.val)
         return ans[0]
