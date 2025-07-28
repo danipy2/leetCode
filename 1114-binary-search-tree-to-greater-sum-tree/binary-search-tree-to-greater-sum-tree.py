@@ -6,16 +6,15 @@
 #         self.right = right
 class Solution:
     def bstToGst(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        def go(r,val=0):
-            ans = r.val
-            if r.right:
-                ans += go(r.right,val)
-            r.val = ans
-            r.val += val
-            if r.left:
-                ans += go(r.left,r.val)                        
-            return ans 
-        go(root,0)
+        total = 0
+        def reverse_inorder(node):
+            nonlocal total
+            if node:
+                reverse_inorder(node.right)
+                total += node.val
+                node.val = total
+                reverse_inorder(node.left)
+        reverse_inorder(root)
         return root
 
 
