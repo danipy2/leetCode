@@ -6,11 +6,10 @@
 #         self.right = right
 class Solution:
     def averageOfSubtree(self, root: TreeNode) -> int:
-        
         count = 0
         def go(root):
             if not root:
-                return [0,0]
+                return (0,0)
             nonlocal count
             val1 , total1 = go(root.right) 
             val2 , total2 = go(root.left)
@@ -20,7 +19,7 @@ class Solution:
             if v//total==root.val:
                 count+=1 
             
-            return [v,total]
+            return (v,total)
         go(root)
         return count
     
