@@ -1,16 +1,18 @@
 class Solution:
     def reverse(self, x: int) -> int:
-        mod = 2**31
-        a = str(x)
+        a = 0
+        y = abs(x)
+        m = 2**31
+        while y:
+            a*=10
+            a += y %10
+            
+            y = int(y/10)
+            if (a==m and y>0) or a>m :
+                return 0
         if x<0:
-            y = a[1:]
-            x = "-"+ y[::-1]
-            y = int(x)
-            if y < -mod:
-                return 0
-        else:
-            y = int(a[::-1])
-            if y>2**31:
-                return 0
-        return y
+            a*=-1
+        return a
+        
+
         
