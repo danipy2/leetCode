@@ -7,10 +7,15 @@
 class Solution:
     def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
         s = set()
+        cond = False
         def trav(r):
-            if not r:
-                return 
+            nonlocal cond
+            if not r or cond:
+                return
             s.add(r.val)
+            if len(s) >1:
+                cond = True
+                return 
             trav(r.left)
             trav(r.right)
         trav(root)
