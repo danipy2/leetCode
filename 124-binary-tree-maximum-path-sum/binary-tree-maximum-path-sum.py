@@ -9,17 +9,14 @@ class Solution:
         ans = []
         def dfs(root):
             if not root:
-                return -1001
+                return [-1001,-1001]
             
             val = root.val
-            rval =  dfs(root.right)
-            lval = dfs(root.left)
+            rval,mright =  dfs(root.right)
+            lval,mleft = dfs(root.left)
             m = max(lval,rval)
             maxm = max(m,0)+ val
-            ans.append(rval+lval+val)
-            if rval> maxm or lval>maxm:
-                ans.append(max(rval,lval))
-            return maxm 
-        ans.append(dfs(root))
-        return max(ans)
+            max2 = max([m,maxm,mright,mleft,rval+lval+val])
+            return [maxm,max2] 
+        return max(dfs(root))
 
