@@ -15,20 +15,15 @@ class Solution:
                 
                 isbound = 0<=nx<len(grid) and 0<=ny<len(grid[0])
                 if isbound and grid[nx][ny] == grid[x][y]:
-                    print(nx,ny,p1,p2,x,y)
-                    if (nx,ny) in visted:
-                        
-                        if (nx,ny) != (p1,p2):
-                            
+                    v = (nx,ny) in visted 
+                    if v and (nx,ny) != (p1,p2):
                             self.cond = True 
                             return 
-                        continue 
-                    if (nx,ny) != (p1,p2):
+                    if not v:
                         dfs(nx,ny,x,y)
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if (i,j) not in visted:
-                    print(i,j)
                     dfs(i,j,i,j)
         return self.cond
         
