@@ -3,29 +3,26 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        right = len(nums)-1
-        left = right -1  
-        while left>=0  and right>left:
-            if nums[left] < nums[right]:
-                nums[left],nums[right] = nums[right],nums[left]
+        ind = -1
+        found = False
+        for i in range(len(nums)-2,-1,-1):
+            if nums[i] < nums[i+1]:
+                ind = i-1
+                found = True
                 break
-            else:
-                if left+1==right:
-                    left-=1
-                    right = len(nums)-1
-                else:
-                    right -=1
-        right = len(nums)-1
-        left+=1
-        while(left<right):
-            if nums[left]> nums[right]:
-                nums[left],nums[right] = nums[right],nums[left]
-                left+=1
-                right-=1
-            else:
-                break
-            
-                
+        l = ind+1
+        r = len(nums)-1
         
-
-        
+        if found:
+            ind2 = 0 
+            maxm = 101
+            for i in range(l,len(nums)):
+                if nums[i] > nums[l] and nums[i] <= maxm:
+                    ind2 = i
+                    maxm = nums[ind2]
+            nums[l],nums[ind2] = nums[ind2],nums[l]
+            l+=1
+        while l < r:
+            nums[l],nums[r] = nums[r],nums[l]
+            r-=1
+            l+=1
