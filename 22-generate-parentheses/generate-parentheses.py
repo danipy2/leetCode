@@ -1,23 +1,19 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         ans = []
-        def gen(arr,stack):
+        def gen(arr,op,cl):
             if len(arr)== n*2:
-                if not stack:
-                    ans.append("".join(arr))
+                ans.append("".join(arr))
                 return 
-            if stack < n:
+            if op < n:
                 arr.append("(")
-                stack+=1
-                gen(arr,stack)
+                gen(arr,op+1,cl)
                 arr.pop()
-                stack-=1
-            if stack:
+            if op>cl:
                 arr.append(")")
-                stack-=1
-                gen(arr,stack)
+                gen(arr,op,cl+1)
                 arr.pop()
 
-        gen([],0)
+        gen([],0,0)
 
         return ans
