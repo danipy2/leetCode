@@ -7,16 +7,16 @@ class Solution:
                     ans.append("".join(arr))
                 return 
             arr.append("(")
-            stack.append("(")
-            gen(arr,stack.copy())
+            stack+=1
+            gen(arr,stack)
             arr.pop()
-            stack.pop()
+            stack-=1
             if stack:
                 arr.append(")")
-                stack.pop()
-                gen(arr,stack.copy())
+                stack-=1
+                gen(arr,stack)
                 arr.pop()
 
-        gen([],[])
+        gen([],0)
 
         return ans
