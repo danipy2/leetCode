@@ -6,7 +6,7 @@ class Solution:
                 if not stack:
                     ans.append("".join(arr))
                 return 
-            if stack < n+1//2:
+            if stack < n:
                 arr.append("(")
                 stack+=1
                 gen(arr,stack)
