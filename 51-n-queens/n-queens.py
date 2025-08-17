@@ -1,71 +1,43 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        board = [[0] * n for i in range(n)]
         ans = []
         def inbound(x,y):
             return 0<= x < n and 0<= y < n
-        def markattack(x,y,s):
-            yl = y-1
-            while 0<= yl < n:
-                board[x][yl] += s
-                yl-= 1
-            yr = y+1
-            while 0<= yr < n:
-                board[x][yr] += s
-                yr+= 1
-            xl = x-1
-            while 0<= xl <  n:
-                board[xl][y] += s
-                xl-=1 
-            xr = x+1
-            while 0<= xr < n:
-                board[xr][y] += s
-                xr+= 1
-            xl,yl = x-1,y-1
-            while inbound(xl,yl):
-                board[xl][yl] += s
-                yl-=1
-                xl-=1
-            xr,yr = x+1,y+1
-            while inbound(xr,yr):
-                board[xr][yr] += s
-                yr+=1
-                xr+=1
-            xl,yr = x-1,y+1
-            while inbound(xl,yr):
-                board[xl][yr] += s
-                yr+=1
-                xl-=1
-            xr,yl = x+1,y-1
-            while inbound(xr,yl):
-                board[xr][yl] += s
-                yl-=1
-                xr+=1
+        set1 = {}
+        set2 = {}
+        set3 = {}
+        set5 = {}
+
+        def markattack(x,y,c):
+            set1[x] = set1.get(x,0) + c
+            set2[x+y] = set2.get(x+y,0) + c
+            set3[x-y] = set3.get(x-y,0) + c
+            set5[y] = set5.get(y,0)+c
+        set4 = set()
         def putans():
-                b = [[0] * n for i in range(n)]
-                for x in range(n):
-                    for y in range(n):
-                        if board[x][y]==0:
-                            b[x][y]="Q"
-                        else:
-                            b[x][y]="."
+                b = [["."] * n for i in range(n)]
+                for (i,j) in set4:
+                    b[i][j]="Q"
                 ans.append(["".join(b[i]) for i in range(n)])
         def putqueen(x,y,c):
-            markattack(x,y,1)
+            set4.add((x,y))
             if c==1:
                 putans()
-                pass
+                set4.remove((x,y))
+                return
+            markattack(x,y,1)
             x1 = x+1
             y1 = 0
             for i in range(x1,n):
                 for j in range(y1,n):
-                    if board[i][j]==0:
+                    if not set1.get(i,0) and not set2.get(i+j,0) and not set3.get(i-j,0) and not set5.get(j,0):
                         putqueen(i,j,c-1)
+                        
             markattack(x,y,-1)
+            set4.remove((x,y))
         for i in range(n):
             for j in range(n):
-                if putqueen(i,j,n) :
-                    board = [[0] * n for i in range(n)]
+                putqueen(i,j,n)
         return ans
 
             
