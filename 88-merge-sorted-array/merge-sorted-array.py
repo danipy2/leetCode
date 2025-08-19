@@ -3,14 +3,13 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        if not n:
-            return
         l = m-1
-        for i in range(n-1,-1,-1):
-            while l>=0  and nums2[i] < nums1[l]:
-                nums1[l],nums1[l+1+i] = nums1[l+1+i],nums1[l]
+        r = n-1
+        for i in range(m+n-1,-1,-1):
+            
+            if r<0 or l>=0 and nums1[l] > nums2[r]:
+                nums1[i] = nums1[l]
                 l-=1
             else:
-                nums1[l+1+i] = nums2[i]
-        l = 0
-        
+                nums1[i] = nums2[r]
+                r-=1
