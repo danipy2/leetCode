@@ -20,6 +20,5 @@ class Solution:
                     s1.remove(col)
                     s2.remove(row-col)
                     s3.remove(row+col)
-        row = 0
         dfs(0,0)
         return count
