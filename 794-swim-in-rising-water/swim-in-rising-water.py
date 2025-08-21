@@ -9,7 +9,6 @@ class Solution:
         while heap:
             w,node = heapq.heappop(heap)
             i,j = node
-            print(node)
             ind = i * n + j
             if arr[ind] != -1:
                 continue
