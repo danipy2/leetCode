@@ -3,7 +3,7 @@ class Solution:
         arr = [0] * (len(edges)+2)
         maxm = -1
         ind = -1
-        for i,j in edges:
+        for i,j in edges[:3]:
             arr[i] +=1
             arr[j] +=1
             if arr[i]>maxm:
