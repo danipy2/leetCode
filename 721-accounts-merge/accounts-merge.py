@@ -28,8 +28,6 @@ class Solution:
                     union(d[v],i)
                 else:
                     d[v] = i
-        c = 0
-        visted = set()
         d = {}
         for i in range(size):
             p = find(i)
