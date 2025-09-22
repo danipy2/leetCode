@@ -1,20 +1,10 @@
 class Solution:
+    def __init__(self):
+        self.memo = [0]*46
     def climbStairs(self, n: int) -> int:
-        s = {}
-        def f(r):
-            if r in s:
-                return s[r]
-            v = 0
-            if r-1>0:
-                v += f(r-1)
-            elif r-1 == 0:
-                v += 1
-            if r-2>0:
-                v += f(r-2)
-            elif r-2==0:
-                v += 1
-            s[r] = v
-            return v
-        f(n)
-        return s[n]
+        if n<3:
+            return n
+        if self.memo[n] == 0:
+            self.memo[n] = self.climbStairs(n-1) +self.climbStairs(n-2)
+        return self.memo[n]
             
