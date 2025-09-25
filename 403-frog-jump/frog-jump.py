@@ -1,10 +1,7 @@
 class Solution:
     def canCross(self, stones: List[int]) -> bool:
         memo= set()
-        c = {}
-        for i in range(len(stones)):
-            stone = stones[i]
-            c[stone] = i
+        c = set(stones)
         def dp(stone,k):
             if k<=0:
                 return False
