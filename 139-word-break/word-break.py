@@ -2,6 +2,7 @@ class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         cond = False
         set1 = set()
+        wordDict = set(wordDict)
         def dp(i):
             nonlocal cond
             if cond:
@@ -20,6 +21,4 @@ class Solution:
                         return True
             
             return False
-
-        
         return dp(0)
