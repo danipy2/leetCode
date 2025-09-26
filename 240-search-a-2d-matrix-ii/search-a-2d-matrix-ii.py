@@ -7,10 +7,9 @@ class Solution:
         while r1>0 and matrix[r1][0] > target:
             r1-=1
         for i in range(l1,r1+1):
-            for j in range(len(matrix[0])):
-                ind = bisect_left(matrix[i],target)
-                if ind<= l2 and matrix[i][ind] == target:
-                    return True
+            ind = bisect_left(matrix[i],target)
+            if ind<= l2 and matrix[i][ind] == target:
+                return True
         return False
         
 
