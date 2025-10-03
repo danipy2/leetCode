@@ -1,12 +1,13 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        table = [0]*len(prices)
-        for i in range(len(prices)-1,-1,-1):
-            maxm = table[i+1] if i != len(prices)-1 else 0 
-            for j in range(len(prices)-1,i,-1):
-                maxm = max(maxm,prices[j]-prices[i]+(table[j+2] if j+2<len(table) else 0))
-            table[i] = maxm
-        return table[0]
+        n = len(prices)
+        table = [[0,0,0] for i in range(n)]
+        table[0][0] = -prices[0]
+        for i in range(1,n):
+            table[i][0] = max(table[i-1][0],table[i-1][1]-prices[i]) 
+            table[i][1] = max(table[i-1][1],table[i-1][2])
+            table[i][2] = table[i-1][0] + prices[i]
+        return max(table[-1][1],table[-1][2])
             
             
             
