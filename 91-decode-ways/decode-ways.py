@@ -1,13 +1,14 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
-        memo = [-1 if i!="0" else 0 for i in s ]
-        def dp(i):
-            if i == len(s):
-                return 1
-            if memo[i]==-1:
-                memo[i]+= dp(i+1)+1
-                val = int(s[i])
-                if i+1 <len(s) and val*10 + int(s[i+1]) <27:
-                    memo[i]+= dp(i+2) 
-            return memo[i]
-        return dp(0)
+        memo = [0]*(len(s)+1)
+        if s[-1] !="0":
+            memo[-2] = 1
+        memo[-1] = 1
+        
+        for i in range(len(s)-2,-1,-1):
+            if s[i]!="0":
+                memo[i]  = memo[i+1]
+                if int(s[i])*10 +int(s[i+1]) < 27:
+                    memo[i] += memo[i+2]
+        
+        return memo[0]
