@@ -1,17 +1,13 @@
 class Solution:
     def canArrange(self, arr: List[int], k: int) -> bool:
-        d = {}
+        d = [0 ] * k
         for i in arr:
             val = k- (i%k)
             if val==k:
                 continue
-
-            if val in d:
+            if d[val]:
                 d[val]-=1
-                if d[val] ==0:
-                    del d[val]
             else:
-                d[i%k] = d.get(i%k,0)+1
-        if d:
-            return False
-        return True
+                d[i%k] +=1
+        
+        return sum(d) ==0
