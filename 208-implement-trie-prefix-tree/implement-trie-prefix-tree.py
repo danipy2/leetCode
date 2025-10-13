@@ -1,7 +1,7 @@
 class TrieNode:
     def __init__(self):
         self.isend = False
-        self.word = [None for _ in range(26)]
+        self.word = {}
 class Trie:
 
     def __init__(self):
@@ -9,19 +9,18 @@ class Trie:
     def insert(self, word: str) -> None:
         curr = self.root
         for i in word:
-            ind = ord(i)-ord("a")
-            if curr.word[ind]==None:
-                curr.word[ind] = TrieNode()
-            curr = curr.word[ind]
+            
+            if i not in curr.word:
+                curr.word[i] = TrieNode()
+            curr = curr.word[i]
         curr.isend=True
 
     def search(self, word: str) -> bool:
         curr = self.root
         for i in word:
-            ind = ord(i)-ord("a")
-            if curr.word[ind]==None:
+            if i not in curr.word:
                 return False
-            curr = curr.word[ind]
+            curr = curr.word[i]
         if curr.isend == False:
             return False
         return True
@@ -30,9 +29,9 @@ class Trie:
         curr = self.root
         for i in prefix:
             ind = ord(i)-ord("a")
-            if curr.word[ind]==None:
+            if i not in curr.word:
                 return False
-            curr = curr.word[ind]
+            curr = curr.word[i]
 
         return True
 
