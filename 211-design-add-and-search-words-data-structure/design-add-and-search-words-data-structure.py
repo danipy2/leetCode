@@ -23,19 +23,15 @@ class WordDictionary:
         for k in range(len(word)):
             i = word[k]
             if i ==".":
-                cond = False
                 for j in curr.c:
-                    cond = self.search(word[k+1:],curr.c[j])
-                    if cond:
+                    if self.search(word[k+1:],curr.c[j]):
                         return True
                 return False
             if i in curr.c:
                 curr = curr.c[i]
-                continue
-            return False
-        if curr.isend:
-            return True
-        return False
+            else:
+                return False
+        return curr.isend
 
 
 
