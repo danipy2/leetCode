@@ -7,7 +7,6 @@ class WordDictionary:
     
     def __init__(self):
         self.root = TrieNode()
-        self.cond = False
 
     def addWord(self, word: str) -> None:
         curr = self.root
@@ -20,19 +19,15 @@ class WordDictionary:
     def search(self, word: str,curr:TrieNode = None) -> bool:
         if curr == None:
             curr = self.root
-            self.cond = False
-        if self.cond ==True:
-            return True
         
         for k in range(len(word)):
             i = word[k]
             if i ==".":
                 cond = False
                 for j in curr.c:
-                    cond = cond or self.search(word[k+1:],curr.c[j])
-                if cond:
-                    self.cond = True
-                    return True
+                    cond = self.search(word[k+1:],curr.c[j])
+                    if cond:
+                        return True
                 return False
             if i in curr.c:
                 curr = curr.c[i]
