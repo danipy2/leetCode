@@ -18,11 +18,12 @@ class WordDictionary:
         curr.isend = True
         
     def search(self, word: str,curr:TrieNode = None) -> bool:
-        if self.cond ==True:
-            return True
         if curr == None:
             curr = self.root
             self.cond = False
+        if self.cond ==True:
+            return True
+        
         for k in range(len(word)):
             i = word[k]
             if i ==".":
@@ -30,6 +31,7 @@ class WordDictionary:
                 for j in curr.c:
                     cond = cond or self.search(word[k+1:],curr.c[j])
                 if cond:
+                    self.cond = True
                     return True
                 return False
             if i in curr.c:
