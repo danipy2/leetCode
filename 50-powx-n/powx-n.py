@@ -3,7 +3,6 @@ class Solution:
         num = abs(n)
         total = 1
         while num:
-            print(num,num&1)
             if num & 1:
                 total *= x
             x*=x
