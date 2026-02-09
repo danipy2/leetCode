@@ -2,8 +2,13 @@ class RandomizedSet:
 
     def __init__(self):
         self.s = set()
+        self.d = set()
+        self.arr = []
         
     def insert(self, val: int) -> bool:
+        if val not in self.d:
+            self.d.add(val)
+            self.arr.append(val)
         if val in self.s:
             return False
         self.s.add(val)
@@ -15,7 +20,11 @@ class RandomizedSet:
         self.s.remove(val)
         return True
     def getRandom(self) -> int:
-        return random.choice(tuple(self.s))
+        ans = random.choice(self.arr)
+        while ans not in self.s:
+            ans = random.choice(self.arr)
+        return ans
+
         
 
 
