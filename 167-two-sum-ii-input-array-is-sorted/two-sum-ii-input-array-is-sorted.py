@@ -3,9 +3,12 @@ class Solution:
         l = 0
         r = len(numbers)-1
         while l<r:
-            if numbers[l] + numbers[r]==target:
+            tot = numbers[l]+numbers[r]
+            if tot == target:
                 return [l+1,r+1]
-            elif numbers[l] + numbers[r]<target:
+            elif tot<target:
                 l+=1
             else:
                 r-=1
+        
+        
