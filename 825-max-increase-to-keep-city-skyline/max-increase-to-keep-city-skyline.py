@@ -7,7 +7,6 @@ class Solution:
             for j in range(len(grid)):
                 maxm = max(grid[j][i],maxm)
             cols.append(maxm)
-        print(rows,cols)
         total = 0
         total1 = 0
         for i in range(len(grid)):
