@@ -17,14 +17,17 @@ class Solution:
                 r.right = finddelte(r.right,k)
             elif k<r.val:
                 r.left = finddelte(r.left,k)
-            else: 
-                if not r.right:
-                    return r.left
-                if not r.left:
+            else:
+                if r.left and r.right:
+                    n = findlst(r.right)
+                    r.val = n.val
+                    r.right = finddelte(r.right,n.val)
+                elif r.right:
                     return r.right
-                n = findlst(r.right)
-                r.val = n.val
-                r.right = finddelte(r.right,n.val)
+                elif r.left:
+                    return r.left
+                else:
+                    return None
             return r
         return finddelte(root,key)
                 
