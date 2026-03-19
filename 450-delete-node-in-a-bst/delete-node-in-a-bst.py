@@ -7,8 +7,8 @@
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         def findlst(r):
-            while r.left:
-                r = r.left
+            while r.right:
+                r = r.right
             return r
         def finddelte(r,k):
             if not r:
@@ -19,9 +19,9 @@ class Solution:
                 r.left = finddelte(r.left,k)
             else:
                 if r.left and r.right:
-                    n = findlst(r.right)
+                    n = findlst(r.left)
                     r.val = n.val
-                    r.right = finddelte(r.right,n.val)
+                    r.left = finddelte(r.left,n.val)
                 elif r.right:
                     return r.right
                 elif r.left:
