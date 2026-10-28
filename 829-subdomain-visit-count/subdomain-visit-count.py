@@ -1,11 +1,13 @@
 class Solution:
     def subdomainVisits(self, cpdomains: list[str]) -> list[str]:
-        mdict = defaultdict(int)
-        for domains in cpdomains:
-            arr = domains.split()
-            d = arr[1].split(".")
-            for i in range(len(d)):
-                mdict[".".join(d[i:])]+=int(arr[0])
-                print(mdict)
+        mydict = defaultdict(int)
+        for domain in cpdomains:
+            value,cpdom = domain.split()
+            scp = cpdom.split(".") 
+            for i in range(len(scp)):
+                js = ".".join(scp[i:])
+                mydict[js] += int(value)
+        return [str(value)+" " + key for key,value in mydict.items()]
+            
+
         
-        return [str(value)+" "+key for key,value in mdict.items()]
